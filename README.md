@@ -1,4 +1,5 @@
 ### Schema report
+
 ```js
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
@@ -30,9 +31,7 @@ const ReportInfoSchema = new Schema(
       required: true,
       trim: true,
     },
-    canvasInfo: {
-      parameterElements: [
-        {
+    canvasInfo: [{
           size: { type: Number, required: true },
           id: { type: String, required: true }, 
           x: { type: Number, required: true },
@@ -44,42 +43,54 @@ const ReportInfoSchema = new Schema(
           fontStyle: { type: String, required: true },
           align: { type: String, required: true },
           name: { type: String, required: true },
-          dateRange: {
-            startTS: { type: Number, required: true },
-            endTS: { type: Number, required: true },
-          },
-          kpiItemId: { type: String, required: true },
-        },
-      ],
-      textElements: [
-        {
-          value: { type: String, required: true },
-          size: { type: Number, required: true },
-          id: { type: String, required: true }, 
-          x: { type: Number, required: true },
-          y: { type: Number, required: true },
-          width: { type: Number, required: true },
-          height: { type: Number, required: true },
-          fill: { type: String, default: "transparent" },
-          color: { type: String, required: true },
-          fontStyle: { type: String, required: true },
-          align: { type: String, required: true },
-        },
-      ],
+
+          // other
+          uuid: { type: String, required: true },
+          elementType: { type: String, required: true, enum: ["parameter","text","widget"] },
+      }],
+  },
+  { timestamps: true }
+);
+
+const ReportInfoModel = mongoose.model("ReportInfo", ReportInfoSchema);
+module.exports = ReportInfoModel;
+
+```
+
+### Schema parameter
+
+```js
+const mongoose = require("mongoose");
+
+// Define the schema
+const ParameterSchema = new mongoose.Schema(
+  {
+    reportId: {
+      type: String,
+      required: true,
+      trim: true,
     },
-    listParameter: [
-      {
-        id: { type: String, require: true },
-        displayName: { type: String },
-        unit: { type: String },
-        formula: { type: String },
-        isRaw: { type: Boolean },
-        isConstant: { type: Boolean, default: false },
+    uuid: {
+      type: String,
+      required: true,
+    },
+    kpiItem: {
+      type: {
+        displayName: String,
+        unit: String,
+        formula: String,
+        isRaw: {
+          type: Boolean,
+        },
+        isConstant: {
+          type: Boolean,
+          default: false,
+        },
         params: [
           {
-            name: { type: String },
-            variableName: { type: String },
-            deviceName: { type: String },
+            name: String,
+            variableName: String,
+            deviceName: String,
             deviceType: {
               type: String,
               enum: ["E", "G", "W", "INVSOL", "SENSOL"],
@@ -91,12 +102,16 @@ const ReportInfoSchema = new Schema(
           },
         ],
       },
-    ]
+      required: true,
+    },
+    startTS: { type: Number, required: true },
+    endTS: { type: Number, required: true },
   },
   { timestamps: true }
 );
 
-const ReportInfoModel = mongoose.model("ReportInfo", ReportInfoSchema);
-module.exports = ReportInfoModel;
+const ParameterModel = mongoose.model("Parameter", ParameterSchema);
+
+module.exports = ParameterModel;
 
 ```
