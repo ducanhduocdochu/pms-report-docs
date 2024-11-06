@@ -70,6 +70,7 @@ const ParameterSchema = new mongoose.Schema(
       required: true,
       trim: true,
     },
+    orgIdName: { type: String, required: true },
     uuid: {
       type: String,
       required: true,
