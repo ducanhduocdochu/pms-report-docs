@@ -1,17 +1,23 @@
 
-# Report Management System Documentation
+# 📊 Report Management System Documentation
 
-## Mục lục
-- [Schemas](#schemas)
-  - [Report Info Schema](#report-info-schema)
-  - [Parameter Schema](#parameter-schema)
-- [API Documentation](#api-documentation)
-  - [Parameter API](#parameter-api)
-    - [POST /api/parameters](#post-apiparameters)
-    - [GET /api/parameters/:id](#get-apiparametersid)
-    - [PUT /api/parameters/:id](#put-apiparametersid)
-    - [DELETE /api/parameters/:id](#delete-apiparametersid)
-- [Usage Examples](#usage-examples)
+## 📑 Mục lục
+- [📂 Schemas](#schemas)
+  - [📄 Report Info Schema](#report-info-schema)
+  - [📄 Parameter Schema](#parameter-schema)
+- [📝 API Documentation](#api-documentation)
+  - [📊 Parameter API](#parameter-api)
+    - [➕ POST /v1/pms/reports/:reportId/parameter](#-post-v1pmsreportsreportidparameter)
+    - [🔍 GET /v1/pms/reports/:reportId/parameter/:id](#-get-v1pmsreportsreportidparameterid)
+    - [✏️ PUT /v1/pms/reports/:reportId/parameter/:id](#-put-v1pmsreportsreportidparameterid)
+    - [🗑️ DELETE /v1/pms/reports/:reportId/parameter/:id](#-delete-v1pmsreportsreportidparameterid)
+    - [🔍 GET /v1/pms/reports/:reportId/parameter](#-get-v1pmsreportsreportidparameter)
+  - [📊 Report API](#report-api)
+    - [➕ POST /api/parameters](#post-apiparameters)
+    - [🔍 GET /api/parameters/:id](#get-apiparametersid)
+    - [✏️ PUT /api/parameters/:id](#put-apiparametersid)
+    - [🗑️ DELETE /api/parameters/:id](#delete-apiparametersid)
+    - [🔍 GET /api/parameters/:id](#get-apiparametersid)
 
 ---
 
@@ -146,68 +152,57 @@ module.exports = ParameterModel;
 
 ## API Documentation
 
+> Note: Tất cả các api cần header: { 'platform' : 'pms'} và cookies: { 'pms' : 'replaceCookie' }
+
 ### Parameter API
 
 API cho `Parameter` giúp quản lý các biến dữ liệu của báo cáo. Hỗ trợ các thao tác tạo mới, cập nhật, lấy thông tin và xóa parameter.
 
-#### POST /api/parameters
+#### ➕ POST /v1/pms/reports/:reportId/parameter
 
 - **Description**: Tạo một parameter mới cho báo cáo.
-- **Body Parameters**:
-  - `reportId` (string, required): ID của báo cáo.
-  - `orgIdName` (string, required): Tên của tổ chức.
-  - `uuid` (string, required): UUID duy nhất của parameter.
-  - `kpiItem` (object, required): Thông tin chi tiết về KPI.
-  - `startTS` (number, required): Timestamp bắt đầu.
-  - `endTS` (number, required): Timestamp kết thúc.
-- **Response**: Parameter mới được tạo.
-
-#### GET /api/parameters/:id
+  
+#### 🔍 GET /v1/pms/reports/:reportId/parameter/:id
 
 - **Description**: Lấy thông tin parameter theo `id`.
-- **Response**: Chi tiết của parameter với `id` tương ứng.
 
-#### PUT /api/parameters/:id
+#### ✏️ PUT /v1/pms/reports/:reportId/parameter/:id 
 
 - **Description**: Cập nhật thông tin parameter.
-- **Body Parameters**: Tương tự `POST /api/parameters`, các giá trị cần cập nhật.
-- **Response**: Parameter sau khi cập nhật.
 
-#### DELETE /api/parameters/:id
+#### 🗑️ DELETE /v1/pms/reports/:reportId/parameter/:id
 
 - **Description**: Xóa parameter theo `id`.
-- **Response**: Trạng thái xóa parameter.
+
+#### 🔍 GET /v1/pms/reports/:reportId/parameter
+
+- **Description**: Lấy danh sách parameter theo `reportId` của tổ chức.
+
+### Report API
+
+API cho `Report` giúp quản lý báo cáo. Hỗ trợ các thao tác tạo mới, cập nhật, lấy thông tin và xóa.
+
+#### ➕ POST /v1/pms/reports
+
+- **Description**: Tạo một báo cáo.
+  
+#### 🔍 GET /v1/pms/reports/:reportId
+
+- **Description**: Lấy thông tin báo cáo theo `reportId`.
+
+#### ✏️ PUT /v1/pms/reports/:reportId
+
+- **Description**: Cập nhật thông tin báo cáo.
+
+#### 🗑️ DELETE /v1/pms/reports/:reportId
+
+- **Description**: Xóa báo cáo theo `id`.
+
+#### 🔍 GET /v1/pms/reports
+
+- **Description**: Lấy danh sách báo cáo của tổ chức.
 
 ---
 
 ## Usage Examples
 
-- **Tạo mới một parameter**:
-  ```json
-  POST /api/parameters
-  {
-    "reportId": "123",
-    "orgIdName": "ABC Organization",
-    "uuid": "unique-uuid-456",
-    "kpiItem": {
-      "displayName": "Sales KPI",
-      "unit": "%",
-      "formula": "sum(sales)/target",
-      "isRaw": false,
-      "isConstant": true,
-      "params": [
-        {
-          "name": "Sales",
-          "variableName": "sales",
-          "deviceName": "POS Device",
-          "deviceType": "E",
-          "aggregationType": "sum"
-        }
-      ]
-    },
-    "startTS": 1672500000,
-    "endTS": 1672600000
-  }
-  ```
-
---- 
