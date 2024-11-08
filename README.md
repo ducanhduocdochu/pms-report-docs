@@ -28,9 +28,6 @@
 - **Mô tả**: Lưu trữ thông tin báo cáo, bao gồm chủ sở hữu, tên báo cáo, và các phần tử trong báo cáo như `text`, `parameter` (biến dữ liệu để hiển thị giá trị khi xem lại), và `widget` (các đồ thị hoặc biểu đồ).
 
 ```javascript
-const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
-
 const ReportInfoSchema = new Schema(
   {
     owner: {
@@ -58,33 +55,32 @@ const ReportInfoSchema = new Schema(
       required: true,
       trim: true,
     },
-    canvasInfo: [
-      {
-        size: { type: Number, required: true },
-        id: { type: String, required: true },
-        x: { type: Number, required: true },
-        y: { type: Number, required: true },
-        width: { type: Number, required: true },
-        height: { type: Number, required: true },
-        fill: { type: String, default: 'transparent' },
-        color: { type: String, required: true },
-        fontStyle: { type: String, required: true },
-        align: { type: String, required: true },
-        name: { type: String, required: true },
-        uuid: { type: String, required: true },
-        elementType: {
-          type: String,
-          required: true,
-          enum: ["parameter", "text", "widget"],
+    canvasInfo: {
+      type: [
+        {
+          size: { type: Number, required: true },
+          id: { type: String, required: true },
+          x: { type: Number, required: true },
+          y: { type: Number, required: true },
+          width: { type: Number, required: true },
+          height: { type: Number, required: true },
+          fill: { type: String, default: "transparent" },
+          color: { type: String, required: true },
+          fontStyle: { type: String, required: true },
+          align: { type: String, required: true },
+          name: { type: String, required: true },
+          uuid: { type: String, required: true },
+
+          // other
+          paramId: { type: String, required: true },
+          elementType: { type: String, required: true, enum: ["parameter", "text", "widget"] },
         },
-      },
-    ],
+      ],
+      default: [],
+    },
   },
   { timestamps: true }
 );
-
-const ReportInfoModel = mongoose.model("ReportInfo", ReportInfoSchema);
-module.exports = ReportInfoModel;
 ```
 
 ---
@@ -94,8 +90,6 @@ module.exports = ReportInfoModel;
 - **Mô tả**: Lưu trữ biến dữ liệu của một báo cáo, giúp hiển thị danh sách dữ liệu có thể thêm vào báo cáo và cách chèn dữ liệu vào báo cáo.
 
 ```javascript
-const mongoose = require("mongoose");
-
 const ParameterSchema = new mongoose.Schema(
   {
     reportId: {
@@ -104,10 +98,6 @@ const ParameterSchema = new mongoose.Schema(
       trim: true,
     },
     orgIdName: { type: String, required: true },
-    uuid: {
-      type: String,
-      required: true,
-    },
     kpiItem: {
       type: {
         displayName: String,
@@ -140,12 +130,11 @@ const ParameterSchema = new mongoose.Schema(
     },
     startTS: { type: Number, required: true },
     endTS: { type: Number, required: true },
+    name: { type: String },
+    dataType: { type: String },
   },
   { timestamps: true }
 );
-
-const ParameterModel = mongoose.model("Parameter", ParameterSchema);
-module.exports = ParameterModel;
 ```
 
 ---
