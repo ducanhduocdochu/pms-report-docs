@@ -131,7 +131,7 @@ const ParameterSchema = new mongoose.Schema(
     startTS: { type: Number, required: true },
     endTS: { type: Number, required: true },
     name: { type: String },
-    dataType: { type: String },
+    typeData: { type: String },
   },
   { timestamps: true }
 );
@@ -175,7 +175,9 @@ API cho `Parameter` giúp quản lý các biến dữ liệu của báo cáo. H�
                 "aggregationType": string
             }
         ]
-    }
+    },
+    "name": string,
+    "typeData": string,
 }
 ```
 
@@ -183,10 +185,12 @@ API cho `Parameter` giúp quản lý các biến dữ liệu của báo cáo. H�
 
 ```json
 {
-    "message_en": "Parameter created successfully",
-    "message_vn": "Tạo biến dữ liệu thành công",
+{
+    "message_en": "Parameter updated successfully",
+    "message_vn": "Cập nhật biến dữ liệu thành công",
     "item": {
-        "reportId": "672c286b0ddb120c9e8c52be",
+        "_id": "672e0be47398ef0a181f1351",
+        "reportId": "672c3a39027ef7f660e5ae56",
         "orgIdName": "bia-hanoi",
         "kpiItem": {
             "displayName": "vol_SN",
@@ -201,17 +205,19 @@ API cho `Parameter` giúp quản lý các biến dữ liệu của báo cáo. H�
                     "deviceName": "H 30",
                     "deviceType": "E",
                     "aggregationType": "avg",
-                    "_id": "672c28720ddb120c9e8c52c4"
+                    "_id": "672ecfa46f21d74c463d86c4"
                 }
             ],
-            "_id": "672c28720ddb120c9e8c52c3"
+            "_id": "672ecfa46f21d74c463d86c3"
         },
         "startTS": 123123123,
         "endTS": 12312312313,
-        "_id": "672c28720ddb120c9e8c52c2",
-        "createdAt": "2024-11-07T02:39:46.071Z",
-        "updatedAt": "2024-11-07T02:39:46.071Z",
-        "__v": 0
+        "name": "ducanh",
+        "dataType": "ducanh",
+        "createdAt": "2024-11-08T13:02:28.385Z",
+        "updatedAt": "2024-11-09T02:57:40.092Z",
+        "__v": 0,
+        "typeData": "ducanh"
     }
 }
 ```
@@ -228,10 +234,11 @@ API cho `Parameter` giúp quản lý các biến dữ liệu của báo cáo. H�
 
 ```json
 {
+{
     "message_en": "Get detail parameter successfully",
     "message_vn": "Lấy chi tiết biến dữ liệu thành công",
-    "items": {
-        "_id": "672c3a4a027ef7f660e5ae5a",
+    "item": {
+        "_id": "672e0be47398ef0a181f1351",
         "reportId": "672c3a39027ef7f660e5ae56",
         "orgIdName": "bia-hanoi",
         "kpiItem": {
@@ -247,16 +254,19 @@ API cho `Parameter` giúp quản lý các biến dữ liệu của báo cáo. H�
                     "deviceName": "H 30",
                     "deviceType": "E",
                     "aggregationType": "avg",
-                    "_id": "672c3a4a027ef7f660e5ae5c"
+                    "_id": "672ecfa46f21d74c463d86c4"
                 }
             ],
-            "_id": "672c3a4a027ef7f660e5ae5b"
+            "_id": "672ecfa46f21d74c463d86c3"
         },
         "startTS": 123123123,
         "endTS": 12312312313,
-        "createdAt": "2024-11-07T03:55:54.208Z",
-        "updatedAt": "2024-11-07T03:55:54.208Z",
-        "__v": 0
+        "name": "ducanh",
+        "dataType": "ducanh",
+        "createdAt": "2024-11-08T13:02:28.385Z",
+        "updatedAt": "2024-11-09T02:57:40.092Z",
+        "__v": 0,
+        "typeData": "ducanh"
     }
 }
 ```
@@ -290,7 +300,9 @@ API cho `Parameter` giúp quản lý các biến dữ liệu của báo cáo. H�
                 "aggregationType": string
             }
         ]
-    }
+    },
+    "name": string,
+    "typeData": string,
 }
 ```
 
@@ -301,7 +313,7 @@ API cho `Parameter` giúp quản lý các biến dữ liệu của báo cáo. H�
     "message_en": "Parameter updated successfully",
     "message_vn": "Cập nhật biến dữ liệu thành công",
     "item": {
-        "_id": "672c3a4a027ef7f660e5ae5a",
+        "_id": "672e0be47398ef0a181f1351",
         "reportId": "672c3a39027ef7f660e5ae56",
         "orgIdName": "bia-hanoi",
         "kpiItem": {
@@ -317,16 +329,19 @@ API cho `Parameter` giúp quản lý các biến dữ liệu của báo cáo. H�
                     "deviceName": "H 30",
                     "deviceType": "E",
                     "aggregationType": "avg",
-                    "_id": "672c3ab70e4597a9fc2334b1"
+                    "_id": "672ecfa46f21d74c463d86c4"
                 }
             ],
-            "_id": "672c3ab70e4597a9fc2334b0"
+            "_id": "672ecfa46f21d74c463d86c3"
         },
         "startTS": 123123123,
-        "endTS": 12312392313,
-        "createdAt": "2024-11-07T03:55:54.208Z",
-        "updatedAt": "2024-11-07T03:57:43.275Z",
-        "__v": 0
+        "endTS": 12312312313,
+        "name": "ducanh",
+        "dataType": "ducanh",
+        "createdAt": "2024-11-08T13:02:28.385Z",
+        "updatedAt": "2024-11-09T02:57:40.092Z",
+        "__v": 0,
+        "typeData": "ducanh"
     }
 }
 ```
