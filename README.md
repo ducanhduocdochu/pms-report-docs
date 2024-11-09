@@ -185,12 +185,10 @@ API cho `Parameter` giúp quản lý các biến dữ liệu của báo cáo. H�
 
 ```json
 {
-{
-    "message_en": "Parameter updated successfully",
-    "message_vn": "Cập nhật biến dữ liệu thành công",
+    "message_en": "Parameter created successfully",
+    "message_vn": "Tạo biến dữ liệu thành công",
     "item": {
-        "_id": "672e0be47398ef0a181f1351",
-        "reportId": "672c3a39027ef7f660e5ae56",
+        "reportId": "672ed2ca68c049c1cd146228",
         "orgIdName": "bia-hanoi",
         "kpiItem": {
             "displayName": "vol_SN",
@@ -205,19 +203,19 @@ API cho `Parameter` giúp quản lý các biến dữ liệu của báo cáo. H�
                     "deviceName": "H 30",
                     "deviceType": "E",
                     "aggregationType": "avg",
-                    "_id": "672ecfa46f21d74c463d86c4"
+                    "_id": "672ed38468c049c1cd14627b"
                 }
             ],
-            "_id": "672ecfa46f21d74c463d86c3"
+            "_id": "672ed38468c049c1cd14627a"
         },
         "startTS": 123123123,
         "endTS": 12312312313,
-        "name": "ducanh",
-        "dataType": "ducanh",
-        "createdAt": "2024-11-08T13:02:28.385Z",
-        "updatedAt": "2024-11-09T02:57:40.092Z",
-        "__v": 0,
-        "typeData": "ducanh"
+        "name": "ducanh5",
+        "typeData": "ducanh",
+        "_id": "672ed38468c049c1cd146279",
+        "createdAt": "2024-11-09T03:14:12.468Z",
+        "updatedAt": "2024-11-09T03:14:12.468Z",
+        "__v": 0
     }
 }
 ```
@@ -233,7 +231,6 @@ API cho `Parameter` giúp quản lý các biến dữ liệu của báo cáo. H�
 - **Response**:
 
 ```json
-{
 {
     "message_en": "Get detail parameter successfully",
     "message_vn": "Lấy chi tiết biến dữ liệu thành công",
@@ -262,7 +259,6 @@ API cho `Parameter` giúp quản lý các biến dữ liệu của báo cáo. H�
         "startTS": 123123123,
         "endTS": 12312312313,
         "name": "ducanh",
-        "dataType": "ducanh",
         "createdAt": "2024-11-08T13:02:28.385Z",
         "updatedAt": "2024-11-09T02:57:40.092Z",
         "__v": 0,
@@ -313,8 +309,8 @@ API cho `Parameter` giúp quản lý các biến dữ liệu của báo cáo. H�
     "message_en": "Parameter updated successfully",
     "message_vn": "Cập nhật biến dữ liệu thành công",
     "item": {
-        "_id": "672e0be47398ef0a181f1351",
-        "reportId": "672c3a39027ef7f660e5ae56",
+        "_id": "672ed38468c049c1cd146279",
+        "reportId": "672ed2ca68c049c1cd146228",
         "orgIdName": "bia-hanoi",
         "kpiItem": {
             "displayName": "vol_SN",
@@ -329,19 +325,18 @@ API cho `Parameter` giúp quản lý các biến dữ liệu của báo cáo. H�
                     "deviceName": "H 30",
                     "deviceType": "E",
                     "aggregationType": "avg",
-                    "_id": "672ecfa46f21d74c463d86c4"
+                    "_id": "672ed3c968c049c1cd14628a"
                 }
             ],
-            "_id": "672ecfa46f21d74c463d86c3"
+            "_id": "672ed3c968c049c1cd146289"
         },
         "startTS": 123123123,
         "endTS": 12312312313,
-        "name": "ducanh",
-        "dataType": "ducanh",
-        "createdAt": "2024-11-08T13:02:28.385Z",
-        "updatedAt": "2024-11-09T02:57:40.092Z",
-        "__v": 0,
-        "typeData": "ducanh"
+        "name": "ducanh5-update",
+        "typeData": "ducanh",
+        "createdAt": "2024-11-09T03:14:12.468Z",
+        "updatedAt": "2024-11-09T03:15:21.166Z",
+        "__v": 0
     }
 }
 ```
@@ -382,6 +377,8 @@ API cho `Parameter` giúp quản lý các biến dữ liệu của báo cáo. H�
             ],
             "_id": "672c3ab70e4597a9fc2334b0"
         },
+        "name": "ducanh5-update",
+        "typeData": "ducanh",
         "startTS": 123123123,
         "endTS": 12312392313,
         "createdAt": "2024-11-07T03:55:54.208Z",
