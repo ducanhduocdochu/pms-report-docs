@@ -30,7 +30,7 @@
 ```javascript
 const ReportInfoSchema = new Schema(
   {
-    owner: {
+    owner: { // chủ sở hữu của report
       type: {
         userId: { type: String, required: true },
         fullName: { type: String, required: true },
@@ -45,34 +45,34 @@ const ReportInfoSchema = new Schema(
       },
       required: true,
     },
-    reportName: {
+    reportName: { // tên report
       type: String,
       required: true,
       trim: true,
     },
-    reportNormalizedName: {
+    reportNormalizedName: { // tên theo dạng normailize
       type: String,
       required: true,
       trim: true,
     },
-    canvasInfo: {
+    canvasInfo: { // Các phần tử canvas trong report
       type: [
         {
-          size: { type: Number, required: true },
-          x: { type: Number, required: true },
-          y: { type: Number, required: true },
-          width: { type: Number, required: true },
-          height: { type: Number, required: true },
-          fill: { type: String, default: "transparent" },
-          color: { type: String, required: true },
-          fontStyle: { type: String, required: true },
-          align: { type: String, required: true },
-          name: { type: String, required: true },
-          uuid: { type: String, required: true },
+          size: { type: Number, required: true }, // kích thước
+          x: { type: Number, required: true }, // vị trí theo tọa đô x
+          y: { type: Number, required: true }, // vị trí theo tọa độ y
+          width: { type: Number, required: true }, // chiều rộng 
+          height: { type: Number, required: true }, // chiều cao
+          fill: { type: String, default: "transparent" }, // màu background
+          color: { type: String, required: true }, // màu chữ
+          fontStyle: { type: String, required: true }, // kiểu chữ time newroman
+          align: { type: String, required: true }, // căn giữa
+          name: { type: String, required: true }, // tên 
+          uuid: { type: String, required: true }, // mã định danh phần tử cho biến paramter === object
 
           // other
-          paramId: { type: String, required: true }, // case text không cần paramId
-          elementType: { type: String, required: true, enum: ["parameter", "text", "widget"] },
+          paramId: { type: String, required: true }, // case text không cần paramId // mã định danh cho biến parameter === class
+          elementType: { type: String, required: true, enum: ["parameter", "text", "widget"] }, kiểu phần tử canvas
         },
       ],
       default: [],
@@ -91,34 +91,34 @@ const ReportInfoSchema = new Schema(
 ```javascript
 const ParameterSchema = new mongoose.Schema(
   {
-    reportId: {
+    reportId: { // mã báo cáo chứa các biến dữ liệu
       type: String,
       required: true,
       trim: true,
     },
-    orgIdName: { type: String, required: true },
-    kpiItem: {
-      type: {
-        displayName: String,
-        unit: String,
-        formula: String,
-        isRaw: {
+    orgIdName: { type: String, required: true }, // tổ chức
+    kpiItem: { // dữ liệu cụ thể
+      type: { 
+        displayName: String, // tên hiển thị
+        unit: String, // đơn vị
+        formula: String, // công thức
+        isRaw: { // dữ liệu thô hay không 
           type: Boolean,
         },
-        isConstant: {
+        isConstant: { // nếu sử dụng công thức dữ liệu có ở dạng constant hay không
           type: Boolean,
           default: false,
         },
-        params: [
+        params: [ // bộ dữ liệu để tính toán cho dữ liệu cụ thể
           {
-            name: String,
-            variableName: String,
-            deviceName: String,
-            deviceType: {
+            name: String,// tên dữ liệu 
+            variableName: String,// tên biến
+            deviceName: String,// tên thiết bị
+            deviceType: {//loại thiết bị
               type: String,
               enum: ["E", "G", "W", "INVSOL", "SENSOL"],
             },
-            aggregationType: {
+            aggregationType: {//cách tính toán
               type: String,
               enum: ["sum", "avg", "max", "min", "last", "counter", null],
             },
@@ -127,10 +127,13 @@ const ParameterSchema = new mongoose.Schema(
       },
       required: true,
     },
-    startTS: { type: Number, required: true },
-    endTS: { type: Number, required: true },
-    name: { type: String },
-    typeData: { type: String },
+    startTS: { type: Number, required: true }, // thời gian bắt đầu tính toán dữ liệu
+    endTS: { type: Number, required: true }, // thời gian kết thúc
+    name: { type: String }, // tên dữ liệu
+    typeData: { 
+      type: String, 
+      enum: ["raw", "custom"]
+    }, // loại dữ liệu
   },
   { timestamps: true }
 );
