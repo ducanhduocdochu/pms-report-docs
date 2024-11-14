@@ -18,7 +18,7 @@
     - [✏️ PUT /v1/pms/reports/:reportId](#️-put-v1pmsreportsreportid)
     - [🗑️ DELETE /v1/pms/reports/:reportId](#️-delete-v1pmsreportsreportid)
     - [🔍 GET /v1/pms/reports](#-get-v1pmsreports)
-
+    - [➕ POST /v1/pms/reports/review](#-get-v1pmsreportsreview)
 ---
 
 ## Schemas
@@ -670,6 +670,70 @@ API cho `Report` giúp quản lý báo cáo. Hỗ trợ các thao tác tạo m�
     "total": 3,
     "page": 1,
     "pageSize": 5
+}
+```
+
+#### 🔍 POST /v1/pms/reports/review
+
+- **Description**: Lấy dữ liệu cho bản review báo cáo của tổ chức.
+
+- **Query**:
+
+```json
+{
+    "reportId": string,
+    "canvasInfo": [
+        {
+            "size": number,
+            "x": number,
+            "y": number,
+            "width": number,
+            "height": number,
+            "fill": string,
+            "color": string,
+            "fontStyle": string,
+            "align": string,
+            "name": string,
+            "uuid": string,
+            "paramId": string,
+            "elementType": "parameter" // case parameter phải có paramId
+        },
+        {
+            "size":  number,
+            "x": number,
+            "y": number,
+            "width": number,
+            "height": number,
+            "fill": string,
+            "color": string,
+            "fontStyle": string,
+            "align": string,
+            "name": string,
+            "uuid": string, 
+            "elementType": "text" // case text không có paramId
+        }
+    ]
+}
+```
+
+- **Response**:
+
+```json
+{
+    "message_en": "Get the data of the report successfully",
+    "message_vn": "Lấy dữ liệu báo cáo thành công",
+    "items": [
+        {
+            "item": 2428249.692,
+            "uuid": "report_tV8xY-1731466983329",
+            "elementType": "parameter"
+        },
+        {
+            "item": 2428249.692,
+            "uuid": "report_tV8xY-1731466983329",
+            "elementType": "parameter"
+        }
+    ]
 }
 ```
 
