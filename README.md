@@ -18,7 +18,7 @@
     - [✏️ PUT /v1/pms/reports/:reportId](#️-put-v1pmsreportsreportid)
     - [🗑️ DELETE /v1/pms/reports/:reportId](#️-delete-v1pmsreportsreportid)
     - [🔍 GET /v1/pms/reports](#-get-v1pmsreports)
-    - [➕ POST /v1/pms/reports/review](#-get-v1pmsreportsreview)
+    - [➕ POST /v1/pms/reports/review](#-post-v1pmsreportsreview)
 ---
 
 ## Schemas
