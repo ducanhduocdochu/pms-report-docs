@@ -59,7 +59,6 @@ const ReportInfoSchema = new Schema(
       type: [
         {
           size: { type: Number, required: true },
-          id: { type: String, required: true },
           x: { type: Number, required: true },
           y: { type: Number, required: true },
           width: { type: Number, required: true },
@@ -72,7 +71,7 @@ const ReportInfoSchema = new Schema(
           uuid: { type: String, required: true },
 
           // other
-          paramId: { type: String, required: true },
+          paramId: { type: String, required: true }, // case text không cần paramId
           elementType: { type: String, required: true, enum: ["parameter", "text", "widget"] },
         },
       ],
